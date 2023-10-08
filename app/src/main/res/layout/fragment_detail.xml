@@ -8,7 +8,7 @@
     tools:context=".ui.fragment.DetailContactFragment">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarAddContact"
+        android:id="@+id/toolbarContactDetail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
@@ -23,12 +23,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
         android:layout_marginTop="128dp"
+        android:layout_marginEnd="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbarAddContact"
-        tools:layout_editor_absoluteY="233dp">
+        app:layout_constraintTop_toBottomOf="@+id/toolbarContactDetail">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextContactName"
@@ -66,4 +65,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textInputContactNumber">
     </Button>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

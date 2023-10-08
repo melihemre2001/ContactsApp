@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_activity_nav"
+    app:startDestination="@id/mainpageFragment">
+
+    <fragment
+        android:id="@+id/addContactFragment"
+        android:name="com.mobile.contactsapp.ui.fragment.AddContactFragment"
+        android:label="fragment_add_contact"
+        tools:layout="@layout/fragment_add_contact" />
+    <fragment
+        android:id="@+id/detailContactFragment"
+        android:name="com.mobile.contactsapp.ui.fragment.DetailContactFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="contact"
+            app:argType="com.mobile.contactsapp.data.entity.Contacts" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainpageFragment"
+        android:name="com.mobile.contactsapp.ui.fragment.MainpageFragment"
+        android:label="fragment_mainpage"
+        tools:layout="@layout/fragment_mainpage" >
+        <action
+            android:id="@+id/mainpageToAddContact"
+            app:destination="@id/addContactFragment" />
+        <action
+            android:id="@+id/mainpageToDetailContact"
+            app:destination="@id/detailContactFragment" />
+    </fragment>
+</navigation>
