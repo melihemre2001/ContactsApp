@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView.OnQueryTextListener
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mobile.contactsapp.R
@@ -17,9 +18,10 @@ import com.mobile.contactsapp.ui.adapter.ContactsAdapter
 class MainpageFragment : Fragment() {
     private lateinit var binding: FragmentMainpageBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        binding = FragmentMainpageBinding.inflate(inflater,container,false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_mainpage,container,false)
+        binding.mainpageFragment = this
 
-        binding.toolbarMainpage.title = "Contacts"
+        binding.mainpageToolbarTitle = "Contacts"
 
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
@@ -33,10 +35,10 @@ class MainpageFragment : Fragment() {
         contactsList.add(k3)
 
         val contactsAdapter = ContactsAdapter(requireContext(),contactsList)
-        binding.recyclerView.adapter = contactsAdapter
+        binding.contactsAdapter = contactsAdapter
 
         binding.fab.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.mainpageToAddContact)
+
         }
 
         binding.searchView.setOnQueryTextListener(object : OnQueryTextListener{
@@ -53,6 +55,9 @@ class MainpageFragment : Fragment() {
 
 
         return binding.root
+    }
+    fun fabClick(it:View){
+        Navigation.findNavController(it).navigate(R.id.mainpageToAddContact)
     }
 
     fun search(searchWord: String){

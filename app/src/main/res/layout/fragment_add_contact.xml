@@ -1,68 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.fragment.AddContactFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarAddContact"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
+        <variable
+            name="addContactToolbarTitle"
+            type= "String"
+            />
+        
+        <variable
+            name="addContactFragment"
+            type="com.mobile.contactsapp.ui.fragment.AddContactFragment" />
+    </data>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputContactName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginTop="128dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbarAddContact"
-        tools:layout_editor_absoluteY="233dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextContactName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Contact Name" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/textInputContactNumber"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputContactName"
-        android:layout_marginTop="64dp"
-        >
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextContactNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Contact Number" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:id="@+id/saveBtn"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="32dp"
-        android:layout_marginTop="64dp"
-        android:text="SAVE"
-        app:layout_constraintTop_toBottomOf="@id/textInputContactNumber"
-        tools:layout_editor_absoluteX="32dp">
-    </Button>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent"
+        tools:context=".ui.fragment.AddContactFragment">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarAddContact"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            app:title="@{addContactToolbarTitle}"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputContactName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="128dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbarAddContact"
+            tools:layout_editor_absoluteY="233dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextContactName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Contact Name" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textInputContactNumber"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputContactName"
+            android:layout_marginTop="64dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextContactNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Contact Number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/saveBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="64dp"
+            android:text="SAVE"
+            android:onClick="@{() -> addContactFragment.saveContact(editTextContactName.getText().toString(),editTextContactNumber.getText().toString())}"
+            app:layout_constraintTop_toBottomOf="@id/textInputContactNumber"
+            tools:layout_editor_absoluteX="32dp">
+        </Button>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

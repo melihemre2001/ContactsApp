@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.navArgs
 import com.mobile.contactsapp.R
 import com.mobile.contactsapp.databinding.FragmentDetailBinding
@@ -13,12 +14,14 @@ import com.mobile.contactsapp.databinding.FragmentDetailBinding
 class DetailContactFragment : Fragment() {
     private lateinit var binding: FragmentDetailBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = FragmentDetailBinding.inflate(inflater,container,false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail,container,false)
+        binding.detailContactFragment = this
 
-        binding.toolbarContactDetail.title = "Contact Detail"
+        binding.detailContactToolbarTitle  = "Contact Detail"
 
         val bundle: DetailContactFragmentArgs by navArgs()
         val takenContact = bundle.contact
+        binding.contactsObject = takenContact
 
         binding.editTextContactName.setText(takenContact.contact_name)
         binding.editTextContactNumber.setText(takenContact.contact_number)
