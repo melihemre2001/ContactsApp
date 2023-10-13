@@ -7,11 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import com.mobile.contactsapp.R
 import com.mobile.contactsapp.databinding.FragmentAddContactBinding
+import com.mobile.contactsapp.ui.viewmodel.AddContactViewModel
 
 class AddContactFragment : Fragment() {
     private lateinit var binding: FragmentAddContactBinding
+    private lateinit var viewModel: AddContactViewModel
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_add_contact,container, false)
         binding.addContactFragment = this
@@ -20,7 +23,13 @@ class AddContactFragment : Fragment() {
         return binding.root
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val tempViewModel: AddContactViewModel by viewModels()
+        viewModel = tempViewModel
+    }
+
     fun saveContact(contact_name: String,contact_number: String){
-        Log.e("Add Contact","$contact_name - $contact_number")
+        viewModel.saveContact(contact_name,contact_number)
     }
 }

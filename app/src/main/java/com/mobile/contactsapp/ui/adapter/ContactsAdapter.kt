@@ -14,8 +14,9 @@ import com.mobile.contactsapp.databinding.CardDesignBinding
 import com.mobile.contactsapp.databinding.FragmentMainpageBinding
 import com.mobile.contactsapp.ui.fragment.MainpageFragment
 import com.mobile.contactsapp.ui.fragment.MainpageFragmentDirections
+import com.mobile.contactsapp.ui.viewmodel.MainpageViewModel
 
-class ContactsAdapter(var mContext: Context,var contactsList: List<Contacts>)
+class ContactsAdapter(var mContext: Context,var contactsList: List<Contacts>,var viewModel: MainpageViewModel)
     : RecyclerView.Adapter<ContactsAdapter.CardDesignHolder>() {
 
     inner class CardDesignHolder(var design: CardDesignBinding) : RecyclerView.ViewHolder(design.root)
@@ -39,7 +40,7 @@ class ContactsAdapter(var mContext: Context,var contactsList: List<Contacts>)
         design.imageViewDelete.setOnClickListener {
             Snackbar.make(it,"Are you sure you want to delete ${contact.contact_name} ?",Snackbar.LENGTH_LONG)
                 .setAction("YES"){
-                    deleteFunc(contact.contact_id)
+                    viewModel.deleteFunc(contact.contact_id)
                 }
                 .show()
         }
@@ -49,8 +50,6 @@ class ContactsAdapter(var mContext: Context,var contactsList: List<Contacts>)
         return contactsList.size
     }
 
-    fun deleteFunc(contact_id: Int){
-        Log.e("Delete Contact",contact_id.toString())
-    }
+
 
 }

@@ -7,12 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.mobile.contactsapp.R
 import com.mobile.contactsapp.databinding.FragmentDetailBinding
+import com.mobile.contactsapp.ui.viewmodel.AddContactViewModel
+import com.mobile.contactsapp.ui.viewmodel.DetailContactViewModel
 
 class DetailContactFragment : Fragment() {
     private lateinit var binding: FragmentDetailBinding
+    private lateinit var viewModel: DetailContactViewModel
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail,container,false)
         binding.detailContactFragment = this
@@ -35,7 +39,12 @@ class DetailContactFragment : Fragment() {
         return binding.root
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val tempViewModel: DetailContactViewModel by viewModels()
+        viewModel = tempViewModel
+    }
     fun updateContact(contact_id: Int,contact_name: String,contact_number: String){
-        Log.e("Add Contact","$contact_id - $contact_name - $contact_number")
+        viewModel.updateContact(contact_id,contact_name,contact_number)
     }
 }
