@@ -17,7 +17,10 @@ import com.mobile.contactsapp.databinding.FragmentMainpageBinding
 import com.mobile.contactsapp.ui.adapter.ContactsAdapter
 import com.mobile.contactsapp.ui.viewmodel.AddContactViewModel
 import com.mobile.contactsapp.ui.viewmodel.MainpageViewModel
+import com.mobile.contactsapp.util.transition
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainpageFragment : Fragment() {
     private lateinit var binding: FragmentMainpageBinding
     private lateinit var viewModel: MainpageViewModel
@@ -62,7 +65,7 @@ class MainpageFragment : Fragment() {
 
 
     fun fabClick(it:View){
-        Navigation.findNavController(it).navigate(R.id.mainpageToAddContact)
+        Navigation.transition(it,R.id.mainpageToAddContact)
     }
 
     override fun onResume() {

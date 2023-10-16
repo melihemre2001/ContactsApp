@@ -6,7 +6,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class ContactsDataSource {
-
     suspend fun loadContacts() : List<Contacts> =
         withContext(Dispatchers.IO){
             val contactsList = ArrayList<Contacts>()

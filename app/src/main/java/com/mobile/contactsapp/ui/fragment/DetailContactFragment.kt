@@ -13,7 +13,10 @@ import com.mobile.contactsapp.R
 import com.mobile.contactsapp.databinding.FragmentDetailBinding
 import com.mobile.contactsapp.ui.viewmodel.AddContactViewModel
 import com.mobile.contactsapp.ui.viewmodel.DetailContactViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class DetailContactFragment : Fragment() {
     private lateinit var binding: FragmentDetailBinding
     private lateinit var viewModel: DetailContactViewModel

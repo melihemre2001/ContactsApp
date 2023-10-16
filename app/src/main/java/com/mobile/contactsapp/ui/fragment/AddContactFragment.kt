@@ -11,7 +11,9 @@ import androidx.fragment.app.viewModels
 import com.mobile.contactsapp.R
 import com.mobile.contactsapp.databinding.FragmentAddContactBinding
 import com.mobile.contactsapp.ui.viewmodel.AddContactViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AddContactFragment : Fragment() {
     private lateinit var binding: FragmentAddContactBinding
     private lateinit var viewModel: AddContactViewModel

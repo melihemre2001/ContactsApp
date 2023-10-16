@@ -15,6 +15,7 @@ import com.mobile.contactsapp.databinding.FragmentMainpageBinding
 import com.mobile.contactsapp.ui.fragment.MainpageFragment
 import com.mobile.contactsapp.ui.fragment.MainpageFragmentDirections
 import com.mobile.contactsapp.ui.viewmodel.MainpageViewModel
+import com.mobile.contactsapp.util.transition
 
 class ContactsAdapter(var mContext: Context,var contactsList: List<Contacts>,var viewModel: MainpageViewModel)
     : RecyclerView.Adapter<ContactsAdapter.CardDesignHolder>() {
@@ -34,7 +35,7 @@ class ContactsAdapter(var mContext: Context,var contactsList: List<Contacts>,var
 
         design.cardViewRow.setOnClickListener {
             val action = MainpageFragmentDirections.mainpageToDetailContact(contact = contact)
-            Navigation.findNavController(it).navigate(action)
+            Navigation.transition(it,action)
         }
 
         design.imageViewDelete.setOnClickListener {

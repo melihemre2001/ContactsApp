@@ -4,8 +4,7 @@ import android.util.Log
 import com.mobile.contactsapp.data.datasource.ContactsDataSource
 import com.mobile.contactsapp.data.entity.Contacts
 
-class ContactsRepository {
-    var cds = ContactsDataSource()
+class ContactsRepository(var cds: ContactsDataSource) {
     suspend fun saveContact(contact_name: String,contact_number: String) =
         cds.saveContact(contact_name,contact_number)
     suspend fun updateContact(contact_id: Int,contact_name: String,contact_number: String) =
