@@ -2,10 +2,11 @@ package com.mobile.contactsapp.data.datasource
 
 import android.util.Log
 import com.mobile.contactsapp.data.entity.Contacts
+import com.mobile.contactsapp.room.ContactsDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class ContactsDataSource {
+class ContactsDataSource(var cdao: ContactsDao) {
     suspend fun loadContacts() : List<Contacts> =
         withContext(Dispatchers.IO){
             val contactsList = ArrayList<Contacts>()
@@ -17,7 +18,7 @@ class ContactsDataSource {
             contactsList.add(k2)
             contactsList.add(k3)
 
-            return@withContext contactsList
+            return@withContext cdao.loadContacts()
         }
 
     suspend fun search(searchWord: String) :List<Contacts> =
