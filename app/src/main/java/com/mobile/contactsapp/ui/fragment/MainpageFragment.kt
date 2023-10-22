@@ -1,7 +1,6 @@
 package com.mobile.contactsapp.ui.fragment
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,10 +11,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mobile.contactsapp.R
-import com.mobile.contactsapp.data.entity.Contacts
 import com.mobile.contactsapp.databinding.FragmentMainpageBinding
 import com.mobile.contactsapp.ui.adapter.ContactsAdapter
-import com.mobile.contactsapp.ui.viewmodel.AddContactViewModel
 import com.mobile.contactsapp.ui.viewmodel.MainpageViewModel
 import com.mobile.contactsapp.util.transition
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,20 +30,11 @@ class MainpageFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_mainpage,container,false)
         binding.mainpageFragment = this
-
         binding.mainpageToolbarTitle = "Contacts"
-
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         viewModel.contactList.observe(viewLifecycleOwner){
             val contactsAdapter = ContactsAdapter(requireContext(),it,viewModel)
             binding.contactsAdapter = contactsAdapter
-        }
-
-
-
-        binding.fab.setOnClickListener {
-
         }
 
         binding.searchView.setOnQueryTextListener(object : OnQueryTextListener{
@@ -60,10 +48,9 @@ class MainpageFragment : Fragment() {
                 return true
             }
         })
+
         return binding.root
     }
-
-
     fun fabClick(it:View){
         Navigation.transition(it,R.id.mainpageToAddContact)
     }

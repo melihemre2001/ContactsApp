@@ -9,34 +9,24 @@ import kotlinx.coroutines.withContext
 class ContactsDataSource(var cdao: ContactsDao) {
     suspend fun loadContacts() : List<Contacts> =
         withContext(Dispatchers.IO){
-            val contactsList = ArrayList<Contacts>()
-            val k1 = Contacts(1,"Melih Emre KAYA","11111")
-            val k2 = Contacts(2,"Serkan KAÇ","22222")
-            val k3 = Contacts(3,"Mert Göksu","33333")
-
-            contactsList.add(k1)
-            contactsList.add(k2)
-            contactsList.add(k3)
-
             return@withContext cdao.loadContacts()
         }
 
     suspend fun search(searchWord: String) :List<Contacts> =
         withContext(Dispatchers.IO){
-            val contactsList = ArrayList<Contacts>()
-            val k1 = Contacts(1,"Melih Emre KAYA","11111")
-
-            contactsList.add(k1)
-            return@withContext contactsList
+            return@withContext cdao.search(searchWord)
     }
 
     suspend fun saveContact(contact_name: String,contact_number: String){
-        Log.e("Add Contact","$contact_name - $contact_number")
+        val newContact = Contacts(0,contact_name,contact_number)
+        cdao.save(newContact)
     }
     suspend fun updateContact(contact_id: Int,contact_name: String,contact_number: String){
-        Log.e("Add Contact","$contact_id - $contact_name - $contact_number")
+        val updatedContact = Contacts(contact_id,contact_name,contact_number)
+        cdao.update(updatedContact)
     }
     suspend fun deleteFunc(contact_id: Int){
-        Log.e("Delete Contact",contact_id.toString())
+        val deletedContact = Contacts(contact_id,"","")
+        cdao.delete(deletedContact)
     }
 }
