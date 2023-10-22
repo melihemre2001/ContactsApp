@@ -8,9 +8,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-
-
-
 @HiltViewModel
 class MainpageViewModel @Inject constructor(var crepo: ContactsRepository) : ViewModel(){
     var contactList = MutableLiveData<List<Contacts>>()

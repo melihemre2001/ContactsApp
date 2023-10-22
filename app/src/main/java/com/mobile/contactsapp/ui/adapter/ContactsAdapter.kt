@@ -1,7 +1,6 @@
 package com.mobile.contactsapp.ui.adapter
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -11,8 +10,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.mobile.contactsapp.R
 import com.mobile.contactsapp.data.entity.Contacts
 import com.mobile.contactsapp.databinding.CardDesignBinding
-import com.mobile.contactsapp.databinding.FragmentMainpageBinding
-import com.mobile.contactsapp.ui.fragment.MainpageFragment
 import com.mobile.contactsapp.ui.fragment.MainpageFragmentDirections
 import com.mobile.contactsapp.ui.viewmodel.MainpageViewModel
 import com.mobile.contactsapp.util.transition

@@ -21,6 +21,6 @@ interface ContactsDao {
     @Delete
     suspend fun delete(contacts: Contacts)
 
-    @Query("SELECT * FROM contacts WHERE contact_name like '½' || :searchWord || '½'")
+    @Query("SELECT * FROM contacts WHERE contact_name like '%' || :searchWord || '%'")
     suspend fun search(searchWord: String) : List<Contacts>
 }

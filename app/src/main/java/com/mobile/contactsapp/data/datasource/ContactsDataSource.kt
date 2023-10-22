@@ -1,6 +1,5 @@
 package com.mobile.contactsapp.data.datasource
 
-import android.util.Log
 import com.mobile.contactsapp.data.entity.Contacts
 import com.mobile.contactsapp.room.ContactsDao
 import kotlinx.coroutines.Dispatchers

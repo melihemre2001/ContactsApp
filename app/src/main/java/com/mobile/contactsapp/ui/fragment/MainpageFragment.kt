@@ -9,7 +9,6 @@ import android.widget.SearchView.OnQueryTextListener
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.mobile.contactsapp.R
 import com.mobile.contactsapp.databinding.FragmentMainpageBinding
 import com.mobile.contactsapp.ui.adapter.ContactsAdapter

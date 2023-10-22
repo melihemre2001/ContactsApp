@@ -1,6 +1,5 @@
 package com.mobile.contactsapp.data.repo
 
-import android.util.Log
 import com.mobile.contactsapp.data.datasource.ContactsDataSource
 import com.mobile.contactsapp.data.entity.Contacts
 
